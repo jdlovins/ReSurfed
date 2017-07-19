@@ -55,7 +55,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 ROOT_URLCONF = 'ReSurfed.urls'
 
 TEMPLATES = [
