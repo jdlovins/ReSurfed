@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'map_uploader',
     'bootstrap3',
     'home',
+    'timer'
 ]
 
 MIDDLEWARE = [
