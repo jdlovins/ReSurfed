@@ -23,6 +23,7 @@ import debug_toolbar
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^timer/', include('timer.urls')),
     url(r'^map_uploader/', map_views.home, name='map_home'),
     url(r'^$', home_views.home, name='home'),
     url(r'^__debug__/', include(debug_toolbar.urls)),
