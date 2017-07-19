@@ -72,7 +72,7 @@ class CheckpointTime(models.Model):
     zone = models.SmallIntegerField()
     time = models.FloatField()
     stage_time = models.FloatField()
-    velocity = models.FloatField(blank=True)
+    velocity = models.FloatField(blank=True, null=True)
 
     class Meta:
         unique_together = (('player', 'map', 'zone'),)
@@ -86,8 +86,8 @@ class Recording(models.Model):
     type = models.IntegerField()
     time = models.FloatField()
     date_created = models.DateTimeField()
-    is_uploaded = models.IntegerField(blank=True)
-    is_deleted = models.IntegerField(blank=True)
+    is_uploaded = models.IntegerField()
+    is_deleted = models.IntegerField()
     md5 = models.CharField(max_length=32)
     length = models.IntegerField()
 
@@ -104,7 +104,7 @@ class MapStatistic(models.Model):
 
 class PlayerOption(models.Model):
     player = models.OneToOneField(Player, primary_key=True, on_delete=models.CASCADE)
-    hud_config = models.CharField(max_length=32)
+    hud_config = models.CharField(max_length=32, blank=True)
     hide_panel = models.IntegerField()
     sounds = models.IntegerField()
     color_scheme = models.IntegerField()
