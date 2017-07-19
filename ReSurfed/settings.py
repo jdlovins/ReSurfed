@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'ReSurfed.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ['db_name'],
-        'USER': os.environ['db_user'],
-        'PASSWORD': os.environ['db_pass'],
-        'HOST': os.environ['db_host'],
-        'PORT': os.environ['db_port'],
+        'NAME': os.environ.get('db_name'),
+        'USER': os.environ.get('db_user'),
+        'PASSWORD': os.environ.get('db_pass'),
+        'HOST': os.environ.get('db_host'),
+        'PORT': os.environ.get('db_port'),
     }
 }
 
