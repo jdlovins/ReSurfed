@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'home',
     'rest_framework',
+    'rest_framework.authtoken',
     'timer.apps.TimerConfig',
 ]
 
@@ -137,3 +138,12 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
