@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'map_uploader',
     'bootstrap3',
     'home',
-    'timer'
+    'rest_framework',
+    'timer.apps.TimerConfig',
 ]
 
 MIDDLEWARE = [
@@ -91,7 +92,6 @@ DATABASES = {
         'PORT': os.environ.get('db_port'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
