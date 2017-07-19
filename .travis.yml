@@ -3,6 +3,8 @@ python:
   - "3.6"
 services:
   - mysql
+  before_install:
+  - mysql -e 'CREATE DATABASE django;'
 install:
   - pip install -r requirements.txt
 script: python manage.py migrate
