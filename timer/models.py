@@ -10,7 +10,7 @@ class Map(models.Model):
     author = models.CharField(max_length=50, blank=True)
     bonuses = models.SmallIntegerField()
     active = models.IntegerField()
-    prehop = models.IntegerField()
+    prevent_prehop = models.IntegerField()
     enable_baked_triggers = models.IntegerField()
 
     def __str__(self):
@@ -88,7 +88,6 @@ class Recording(models.Model):
     date_created = models.DateTimeField()
     is_uploaded = models.IntegerField()
     is_deleted = models.IntegerField()
-    md5 = models.CharField(max_length=32)
     length = models.IntegerField()
 
 
@@ -151,8 +150,8 @@ class Zone(models.Model):
     map = models.ForeignKey(Map, on_delete=models.CASCADE)
     min_cord = models.CharField(max_length=75)
     max_cord = models.CharField(max_length=75)
-    target_name = models.CharField(db_column='targetName', max_length=32, blank=True)
-    filter_name = models.CharField(db_column='filterName', max_length=32, blank=True)
+    target_name = models.CharField(max_length=32, blank=True)
+    filter_name = models.CharField(max_length=32, blank=True)
     type = models.IntegerField()
     value = models.IntegerField()
     velocity = models.IntegerField()
