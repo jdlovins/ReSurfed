@@ -1,4 +1,6 @@
 #!/bin/bash
+set -x
+
 if [ "$TRAVIS_BRANCH" == "development" ]
 then
         echo "We are in the dev branch settings"
