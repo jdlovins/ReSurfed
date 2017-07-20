@@ -5,8 +5,7 @@ then
         HOST=$dev_host
         USER=$dev_user
         HOME_DIR=$dev_home
-
-        export SSHPASS=$dev_pass
+        PASS=$dev_pass
 fi
 
 if [ $TRAVIS_BRANCH == "master" ]
@@ -19,6 +18,7 @@ then
         export SSHPASS=$prod_pass
 fi
 
+echo $PASS > pass.txt
+cat pass.txt
 
-
-sshpass -e ssh $USER@$HOST 'bash write.sh'
+sshpass -f pass.txt -e ssh $USER@$HOST 'bash write.sh'
