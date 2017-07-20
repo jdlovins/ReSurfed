@@ -14,12 +14,7 @@ addons:
     apt:
         packages:
             - sshpass
-deploy:
-  - provider: script
-    script: bash scripts/deploy.sh
-    on:
-      branch: development
-  - provider: script
-    script: bash scripts/deploy.sh
-    on:
-      branch: master
+after_success:
+    - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "development" &&
+    - export SSHPASS=$dev_pass
+    - sshpass -e ssh $dev_user@$dev_host /home/$dev_user/write.sh
