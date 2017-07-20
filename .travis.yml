@@ -16,10 +16,10 @@ addons:
             - sshpass
 deploy:
   - provider: script
-    script: sh scripts/deploy.sh
+    script: bash scripts/deploy.sh
     on:
       branch: development
   - provider: script
-    script: sh scripts/deploy.sh
+    script: bash scripts/deploy.sh
     on:
       branch: master
