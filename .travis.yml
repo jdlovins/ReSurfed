@@ -13,11 +13,11 @@ script:
 deploy:
   # deploy develop to the staging environment
   - provider: script
-    script: scripts/deploy.sh dev
+    script: sh scripts/deploy.sh dev
     on:
       branch: development
   # deploy master to production
   - provider: script
-    script: scripts/deploy.sh prod
+    script: sh scripts/deploy.sh prod
     on:
       branch: master
