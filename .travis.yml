@@ -5,17 +5,21 @@ python:
 services:
   - mysql
 before_install:
-  - mysql -e 'CREATE DATABASE django;'
+  - mysql -e 'CREATE DATABASE test_db;'
 install:
   - pip install -r requirements.txt
 script:
   - python manage.py migrate
+addons:
+    apt:
+        packages:
+            - sshpass
 deploy:
   - provider: script
-    script: sh scripts/deploy.sh dev
+    script: sh scripts/deploy.sh
     on:
       branch: development
   - provider: script
-    script: sh scripts/deploy.sh prod
+    script: sh scripts/deploy.sh
     on:
       branch: master
