@@ -23,5 +23,8 @@ cd $PROJECT_FOLDER
 python manage.py migrate
 python manage.py collectstatic -c --no-input
 
+echo "Restarting surf service..."
 sudo systemctl stop surf
+echo "Stop Return code $?"
 sudo systemctl start surf
+echo "Start Return code $?"
