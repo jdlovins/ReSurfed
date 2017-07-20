@@ -21,4 +21,4 @@ pip install -r $PROJECT_FOLDER/requirements.txt
 cd $PROJECT_FOLDER
 
 python manage.py migrate
-python manage.py collectstatic
+python manage.py collectstatic -c -o
