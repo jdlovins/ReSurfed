@@ -1,6 +1,7 @@
 #!/bin/bash
 if [ "$TRAVIS_BRANCH" == "development" ]
 then
+        echo "We are in the dev branch settings"
         HOST=$dev_host
         USER=$dev_user
         PASSWORD=$dev_pass
@@ -9,6 +10,7 @@ fi
 
 if [ $TRAVIS_BRANCH == "master" ]
 then
+        echo "We are in the master branch settings"
         HOST=$PROD_HOST
         USER=$PROD_USER
         PASSWORD=$PROD_PASSWORD
