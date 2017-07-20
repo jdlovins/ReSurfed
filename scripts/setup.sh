@@ -11,7 +11,7 @@ if [ ! -d "$PROJECT_FOLDER" ]; then
     virtualenv venv
 else
     cd $PROJECT_FOLDER
-    git checkout
+    git pull
     cd ..
 fi
 

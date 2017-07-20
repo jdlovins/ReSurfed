@@ -28,7 +28,3 @@ urlpatterns = [
     url(r'^$', home_views.home, name='home'),
     url(r'^__debug__/', include(debug_toolbar.urls)),
 ]
-
-if settings.DEBUG:
-    print("Setting static root")
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
