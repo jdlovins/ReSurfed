@@ -22,3 +22,6 @@ cd $PROJECT_FOLDER
 
 python manage.py migrate
 python manage.py collectstatic -c --no-input
+
+sudo systemctl stop surf
+sudo systemctl start surf
