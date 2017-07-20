@@ -2,11 +2,13 @@ from django.shortcuts import render
 from rest_framework import generics
 from .models import Map, Server, Player
 from .serializers import MapSerializer, ServerSerializer, PlayerSerializer
+from .filters import MapFilter
 
 
 class MapList(generics.ListCreateAPIView):
     queryset = Map.objects.all()
     serializer_class = MapSerializer
+    filter_class = MapFilter
 
 
 class MapDetail(generics.RetrieveUpdateDestroyAPIView):

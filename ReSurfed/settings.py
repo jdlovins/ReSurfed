@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'timer.apps.TimerConfig',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -140,17 +141,17 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.environ.get("STATIC_ROOT", os.path.join(BASE_DIR, "static_cdn"))
 
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
-    )
+    ),
+    'PAGE_SIZE': 10,
 }
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
-
-REST_FRAMEWORK = {
-    'PAGE_SIZE': 10
-}
