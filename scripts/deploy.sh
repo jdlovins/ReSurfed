@@ -2,7 +2,7 @@
 if [ "$TRAVIS_BRANCH" == "development" ]
 then
         HOST=$dev_host
-        USER=$ev_user
+        USER=$dev_user
         PASSWORD=$dev_pass
         HOME_DIR=$dev_home
 fi
