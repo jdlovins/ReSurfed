@@ -22,3 +22,4 @@ fi
 
 
 sshpass -e ssh $USER@$HOST 'echo "abc" > /home/$USER/test.file'
+echo "sshpass -e ssh $USER@$HOST 'echo "abc" > /home/$USER/test.file'"
