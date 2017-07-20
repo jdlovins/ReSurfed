@@ -11,12 +11,10 @@ install:
 script:
   - python manage.py migrate
 deploy:
-  # deploy develop to the staging environment
   - provider: script
     script: sh scripts/deploy.sh dev
     on:
       branch: development
-  # deploy master to production
   - provider: script
     script: sh scripts/deploy.sh prod
     on:
