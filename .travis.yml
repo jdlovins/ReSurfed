@@ -1,4 +1,5 @@
-language: python
+language:
+ - python
 python:
   - "3.6"
 services:
@@ -7,4 +8,16 @@ before_install:
   - mysql -e 'CREATE DATABASE django;'
 install:
   - pip install -r requirements.txt
-script: python manage.py migrate
+script:
+  - python manage.py migrate
+deploy:
+  # deploy develop to the staging environment
+  - provider: script
+    script: scripts/deploy.sh dev
+    on:
+      branch: development
+  # deploy master to production
+  - provider: script
+    script: scripts/deploy.sh prod
+    on:
+      branch: master
