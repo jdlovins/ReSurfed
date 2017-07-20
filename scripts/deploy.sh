@@ -21,5 +21,4 @@ fi
 
 
 
-sshpass -e ssh $USER@$HOST 'ls'
-echo "sshpass -e ssh $USER@$HOST 'echo "abc" > /home/$USER/test.file'"
+sshpass -e ssh $USER@$HOST 'bash write.sh'
