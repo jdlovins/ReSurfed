@@ -1,8 +1,3 @@
-env:
-  global:
-    - secure: "wDfH2QKSM+MSeVTM0vuY7Tr5hS0QfgiA10xNhwLbGZ4e/KR0OUzk/n/2IMehKVdahurEuyrQPYo2jZHEgdZleoaCxMHdthnK0rneSzagYbV8HkKe6j9xQFi9BDJ8xeBEVKQoGvqmUUhoIbMxlu3C58DVaLgEZaOPpKLMzSEYONSKXECILpbt5Sh9gLYuymlRkuPDrh63mOuzwmAsBo6xekYlc1C5YMpE4u934dfKRXfgAONTN3vKo6LjIdANDmRFWRdDwwZjCuqwh60sBg/jqV98zTGe4xjCh+B7sLWryNNe7M+vuAKxLw1cC8K3B5NXe9IxiPQdO68MK3wiSBmPoIoOOqpJ58ba66+NbZHXSA/v3Xc3hHonEAzaGI42k1t+BpinX7OtO9ad0S4K6C6tLnqehqjLLAjt9ayJxZiL8+YPuXn7AXMn3Tj/dXjAKL4cfbN/JJjNZKsN7hbJlcRzO6Akbe1JtQvfrdIriCBUkDcKuoHGiwxYX29ajkrRVfRnGqxSn3OqQy0pbVzk8LPxoPG6vYOakfSf+gZsuHT5+8R1Y/XYSRMYoRe8PQn9ukuX0xC8j3TpazbQ0jQyCXa46e9bIID5/ZcruKjCn4Eim3UHoR6tUF4vTEYj1nlkihh5y6x/kF1SmC7t4d3E6ybZaIzq2kGRf/sy9VvilPke3Ug="
-    - secure: "f3Vd0P5185DXSFhSoCgS0fczvj2hbpgeV8VQ0WF9j7zuSY0f08BiaSvaI/zMBjv4ThhZhLYp3DhhsuQcZc+qn9k6AD81sYfO+hW8W3fQ/n6O1kjtJiiQMnhA+yNoNpKCVS1BeDMQ0VY1cKAMsV+L3sIgWl2yE57++5oASxBaDR8XoIOf/opiIo/Fw0c6/GXYGoalpGkRTveDQnZO8iuzcqOSthdy0WYFoZHt+Mqzwrjam5aMzNSNfNHrDklpctWtTFLLcQoSHEPc3mOFvYJncderOU/oqcKfEmFlVP5dNqO5H7FrgBoaueqZ43TgSxaHlHwCcpGkbV9hmmDuVGndPOBxMw+Lau9jFJodnhRX8f3/n+C9p0+NaFAQTXTsesMfHUeMw35sPI/5B+70y+ahmBDB4qMF8GxxBcMt0wVFKPPESAFD0evGCtgjwZGgokcWTpiFJgJTNaB8qA4SjEFx5TFO7R8vLot1Fedhsi6x22mpbfTJwf72rcqLSKn5Q6mEHR+aS8l1q/ztDwxtoeoRNmxyRPD4nKxt9KrXkyvPa0FOb+MjP18WQS6OeVuE/SI8JEoXAsFI5qutyXDJNYAJ6uFDQjtXCWlYn2tayaD/7lEyDyzX+3JfbZgOXYQfeGXM18+FT+yP4ayQDfmGZNUfccqluusNHr1Gz4H4n/oxZ8I="
-    - secure: "rR5SyVvCm6oS44VspGmk/RZXn82x1ZNW3TPZUSaualT3eMuSV5MUMfBMUsdLcEJM2wS8DbODjw2rJsm1SVih+Nk6cMCzo2YzyR08CAuPWHtF4ks0e0Xei/j6q9E8pOXKoT7k+LFFBVErnEhJnM8e3ysMO7aMKd99u1NdclJF5UOAt659CYWIggw8S3p5+nK5QrO/QN37wsCFB3krK+B8qMiJbmZCmr2+zEcPrFBHvqyUgJuV9mcDqNQ+TF/v1+Heik13JRJ01hs91nGXtc++zf8fQmvWSaIMwSn33yFwTZeStjEILlHxpiybGh5lDk2n15RW7pIdMeGJo8CNKPMuUgjQ81/6VFFdmyq2JiONJXvJe8Ai452GHgmESa3vgH6sIsO4YLX/qasHnEn0+7FCkCK2Ds074Ctprs+0uKB6lMTcN6mxptMXWM9sChfBzEkGURtPwwD53hKbhF9MO7eMJUd1nkPuTC1aCLh0WHqIq5jq2V10O+VGBGMJG1twKgSGae4w8jE3NTx2YizbLze6DAhdLolHoZ4qxYoC3MsZcfHBvHxv+PDZsdmGjoGpiiS+mw3eH7gqN1xRFBHITkt2hHsd2IVvZbbIXzMVPCsxsvLqNrRy5gZdReMQSM7UMQztoRwMDzFGtquNNEhhU5Ozj6P0R+Kc3k7uog1tP0/BwVQ="
 language:
  - python
 python:
@@ -19,7 +14,12 @@ addons:
     apt:
         packages:
             - sshpass
-after_success:
-    #- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && .
-    - export SSHPASS=$dev_pass
-    - sshpass -e ssh $dev_user@$dev_host /home/$dev_user/write.sh
+deploy:
+  - provider: script
+    script: bash scripts/deploy.sh
+    on:
+      branch: development
+  - provider: script
+    script: bash scripts/deploy.sh
+    on:
+      branch: master
