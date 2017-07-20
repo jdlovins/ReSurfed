@@ -25,8 +25,9 @@ SECRET_KEY = '=p*3kpsk*i&^g5v^&%^b=qs_*rcv&z9@$k-4cncsy013c68&c*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', True)
+print("Debug: " + DEBUG)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['resurfed.xyz']
 INTERNAL_IPS = ('127.0.0.1',)
 
 # Application definition
