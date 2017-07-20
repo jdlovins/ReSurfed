@@ -23,4 +23,4 @@ fi
 echo $PASS > pass.txt
 cat pass.txt
 
-sshpass -f pass.txt ssh $USER@$HOST "bash /home/$USER/write.sh"
+sshpass -f pass.txt ssh $USER@$HOST "echo 'please' > /tmp/file"
