@@ -4,14 +4,14 @@ from django.db import models
 class Map(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(unique=True, max_length=50)
-    difficulty = models.IntegerField(blank=True)
-    checkpoints = models.SmallIntegerField(blank=True)
-    type = models.IntegerField(blank=True)
-    author = models.CharField(max_length=50, blank=True)
-    bonuses = models.SmallIntegerField(blank=True)
-    active = models.IntegerField(blank=True)
-    prevent_prehop = models.IntegerField(blank=True)
-    enable_baked_triggers = models.IntegerField(blank=True)
+    difficulty = models.IntegerField(blank=True, default=0)
+    checkpoints = models.SmallIntegerField(blank=True, default=0)
+    type = models.IntegerField(blank=True, default=0)
+    author = models.CharField(max_length=50, blank=True, default="")
+    bonuses = models.SmallIntegerField(blank=True, default=0)
+    active = models.IntegerField(blank=True, default=0)
+    prevent_prehop = models.IntegerField(blank=True, default=0)
+    enable_baked_triggers = models.IntegerField(blank=True, default=0)
 
     def __str__(self):
         return self.name
