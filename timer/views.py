@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import Map, Server, Player
-from .serializers import MapSerializer, ServerSerializer, PlayerSerializer
-from .filters import MapFilter
+from .models import Map, Server, Player, Time
+from .serializers import MapSerializer, ServerSerializer, PlayerSerializer, TimeSerializer
+from .filters import MapFilter, TimeFilter
 
 
 class MapList(generics.ListCreateAPIView):
@@ -34,3 +34,14 @@ class PlayerList(generics.ListCreateAPIView):
 class PlayerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Player.objects.all()
     serializer_class = PlayerSerializer
+
+
+class TimeList(generics.ListCreateAPIView):
+    queryset = Time.objects.all()
+    serializer_class = TimeSerializer
+    filter_class = TimeFilter
+
+
+class TimeDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Time.objects.all()
+    serializer_class = TimeSerializer

@@ -10,7 +10,9 @@ urlpatterns = [
     url(r'^players/$', views.PlayerList.as_view()),
     url(r'^players/(?P<pk>[0-9]+)/$', views.PlayerDetail.as_view()),
     url(r'^servers/$', views.ServerList.as_view()),
-    url(r'^servers/(?P<pk>[0-9]+)/$', views.ServerDetail.as_view())
+    url(r'^servers/(?P<pk>[0-9]+)/$', views.ServerDetail.as_view()),
+    url(r'^times/$', views.TimeList.as_view()),
+    url(r'^times/(?P<pk>[0-9]+)/$', views.TimeDetail.as_view())
 
 ]
 

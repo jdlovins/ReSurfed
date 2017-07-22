@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from .models import Map
+from .models import Map, Time
 
 
 class MapFilter(filters.FilterSet):
@@ -10,4 +10,9 @@ class MapFilter(filters.FilterSet):
         model = Map
         fields = '__all__'
 
-        
+
+class TimeFilter(filters.FilterSet):
+
+    class Meta:
+        model = Time
+        fields = '__all__'
