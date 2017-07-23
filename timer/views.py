@@ -3,6 +3,7 @@ from rest_framework import generics
 from .models import Map, Server, Player, Time
 from .serializers import MapSerializer, ServerSerializer, PlayerSerializer, TimeSerializer
 from .filters import MapFilter, TimeFilter
+from django.http import HttpResponse
 
 
 class MapList(generics.ListCreateAPIView):
@@ -45,3 +46,8 @@ class TimeList(generics.ListCreateAPIView):
 class TimeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Time.objects.all()
     serializer_class = TimeSerializer
+
+
+def ping(request):
+    return HttpResponse('pong')
+
