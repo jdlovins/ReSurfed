@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Map, Player, Server, Time
+from .models import Map, Player, Server, Time, Zone
 
 
 class MapSerializer(serializers.ModelSerializer):
@@ -23,4 +23,10 @@ class ServerSerializer(serializers.ModelSerializer):
 class TimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Time
+        fields = '__all__'
+
+
+class ZoneSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Zone
         fields = '__all__'

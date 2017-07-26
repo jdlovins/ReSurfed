@@ -12,8 +12,9 @@ urlpatterns = [
     url(r'^servers/$', views.ServerList.as_view()),
     url(r'^servers/(?P<pk>[0-9]+)/$', views.ServerDetail.as_view()),
     url(r'^times/$', views.TimeList.as_view()),
-    url(r'^times/(?P<pk>[0-9]+)/$', views.TimeDetail.as_view())
-
+    url(r'^times/(?P<pk>[0-9]+)/$', views.TimeDetail.as_view()),
+    url(r'^zones/$', views.ZoneList.as_view()),
+    url(r'^zones/(?P<pk>[0-9]+)/$', views.ZoneDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

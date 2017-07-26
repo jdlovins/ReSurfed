@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from .models import Map, Time
+from .models import Map, Time, Zone
 
 
 class MapFilter(filters.FilterSet):
@@ -15,4 +15,10 @@ class TimeFilter(filters.FilterSet):
 
     class Meta:
         model = Time
+        fields = '__all__'
+
+
+class ZoneFilter(filters.FilterSet):
+    class Meta:
+        model = Zone
         fields = '__all__'

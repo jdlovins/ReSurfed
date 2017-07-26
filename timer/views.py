@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import Map, Server, Player, Time
-from .serializers import MapSerializer, ServerSerializer, PlayerSerializer, TimeSerializer
-from .filters import MapFilter, TimeFilter
+from .models import Map, Server, Player, Time, Zone
+from .serializers import MapSerializer, ServerSerializer, PlayerSerializer, TimeSerializer, ZoneSerializer
+from .filters import MapFilter, TimeFilter, ZoneFilter
 from django.http import HttpResponse
 
 
@@ -46,6 +46,17 @@ class TimeList(generics.ListCreateAPIView):
 class TimeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Time.objects.all()
     serializer_class = TimeSerializer
+
+
+class ZoneList(generics.ListCreateAPIView):
+    queryset = Zone.objects.all()
+    serializer_class = ZoneSerializer
+    filter_class = ZoneFilter
+
+
+class ZoneDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Zone.objects.all()
+    serializer_class = ZoneSerializer
 
 
 def ping(request):
